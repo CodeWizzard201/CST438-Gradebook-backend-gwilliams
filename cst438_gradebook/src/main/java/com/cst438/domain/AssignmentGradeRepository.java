@@ -11,4 +11,6 @@ public interface AssignmentGradeRepository extends CrudRepository <AssignmentGra
 			@Param("assignmentId") int assignmentId, 
 			@Param("email") String email );
 	
+	void deleteByAssignmentId(int assignmentId);
+	
 }

@@ -17,24 +17,24 @@ public class Cst438GradebookApplication  {
 		// Thread.sleep(60000); 
 		SpringApplication.run(Cst438GradebookApplication.class, args);
 	}
-	
-	@Bean(name = "RegistrationService")
-	@ConditionalOnProperty(prefix = "registration", name = "service", havingValue = "MQ")
-	public RegistrationService registrationServiceRESTMQ() {
-		return new RegistrationServiceMQ();
-	}
-	
-	
-	@Bean(name = "RegistrationService")
-	@ConditionalOnProperty(prefix = "registration", name = "service", havingValue = "REST")
-	public RegistrationService registrationServiceREST() {
-		return new RegistrationServiceREST();
-	}
-	
-	@Bean(name = "RegistrationService")
-	@ConditionalOnProperty(prefix = "registration", name = "service", havingValue = "default")
-	public RegistrationService registrationServiceDefault() {
-		return new RegistrationService();
-	}
+
+    @Bean(name = "RegistrationService")
+    @ConditionalOnProperty(prefix = "registration", name = "service", havingValue = "MQ")
+    public RegistrationService registrationServiceRESTMQ() {
+        return new RegistrationServiceMQ();
+    }
+
+
+    @Bean(name = "RegistrationService")
+    @ConditionalOnProperty(prefix = "registration", name = "service", havingValue = "REST")
+    public RegistrationService registrationServiceREST() {
+        return new RegistrationServiceREST();
+    }
+
+    @Bean(name = "RegistrationService")
+    @ConditionalOnProperty(prefix = "registration", name = "service", havingValue = "default")
+    public RegistrationService registrationServiceDefault() {
+        return new RegistrationService();
+    }
 
 }

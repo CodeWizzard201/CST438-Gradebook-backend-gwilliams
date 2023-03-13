@@ -88,7 +88,7 @@ public class GradeBookController {
 		}
 		return gradebook;
 	}
-	
+	//TODO later on in class
 	@PostMapping("/course/{course_id}/finalgrades")
 	@Transactional
 	public void calcFinalGrades(@PathVariable int course_id) {
@@ -149,6 +149,7 @@ public class GradeBookController {
 				throw new ResponseStatusException( HttpStatus.BAD_REQUEST, "Invalid grade primary key. "+g.assignmentGradeId);
 			}
 			ag.setScore(g.grade);
+			ag.getAssignment().setNeedsGrading(0); //This sets the assignment status to 0 once graded
 			System.out.printf("%s\n", ag.toString());
 			
 			assignmentGradeRepository.save(ag);
