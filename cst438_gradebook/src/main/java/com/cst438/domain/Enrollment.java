@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 @Entity
 public class Enrollment {
@@ -23,6 +25,7 @@ public class Enrollment {
 	
 	@ManyToOne
 	@JoinColumn(name="course_id")
+	@JsonBackReference
 	private Course course;
 	
 	@OneToMany(mappedBy="studentEnrollment")

@@ -1,6 +1,7 @@
 package com.cst438.domain;
 
 import java.sql.Date;
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -11,20 +12,30 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+
 @Entity
+@JsonIgnoreProperties({"course", "enrollment", "needsGrading"})
 public class Assignment {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@JsonProperty("assignmentId")
 	private int id;
 	
 	@ManyToOne
 	@JoinColumn(name="course_id")
+	@JsonManagedReference
 	private Course course;
 	
 	@OneToMany(mappedBy="assignment")
 	private List<AssignmentGrade> assignmentGrades;
 	
+	@JsonProperty("assignmentName")
 	private String name;
 	private Date dueDate;
 	private int needsGrading;  // 0 = false,  1= true (past due date and not all students have grades)
