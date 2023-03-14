@@ -7,6 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Course {
 	
@@ -19,9 +22,11 @@ public class Course {
 	
 	@OneToMany(mappedBy="course")
 	@OrderBy("studentName ASC")
+	@JsonManagedReference
 	List<Enrollment> enrollments;
 	
 	@OneToMany(mappedBy="course")
+	@JsonBackReference
 	List<Assignment> assignments;
 	
 	public int getCourse_id() {
