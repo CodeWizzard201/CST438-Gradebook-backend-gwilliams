@@ -39,14 +39,14 @@ public class AssignmentController {
 	//Add a new assignment
 	@PostMapping("/assignment/new/{courseId}")
 	@Transactional
-	public Assignment addAssignment(@RequestBody AssignmentDTO ad, @PathVariable("courseId") Integer course_id) {
+	public AssignmentDTO addAssignment(@RequestBody AssignmentDTO ad, @PathVariable("courseId") Integer course_id) {
 		//Taking in assignmentName, dueDate, the id after 'new' is the course id which is used to pull that info
 		//{"assignmentName": ,"dueDate":}
 		String email = "dwisneski@csumb.edu";
 		//Check if the assignment is valid or not
 		Assignment a = newAssignmentCheck(email, ad, course_id);
 		assignmentRepository.save(a);
-		return a;
+		return ad;
 	}
 
 	//Change the name of an assignment
