@@ -88,7 +88,7 @@ public class GradeBookController {
 		}
 		return gradebook;
 	}
-	//TODO later on in class
+	
 	@PostMapping("/course/{course_id}/finalgrades")
 	@Transactional
 	public void calcFinalGrades(@PathVariable int course_id) {
